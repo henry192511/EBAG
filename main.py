@@ -11,18 +11,18 @@ warnings.filterwarnings('ignore', 'Argument interpolation should be of type Inte
 
 def get_args():
     parser = argparse.ArgumentParser('DualPrompt training and evaluation configs')
-    config = 'cub_norgaprompt'
+    config = 'cub_ebag'
 
     subparser = parser.add_subparsers(dest='subparser_name')
-    if config == 'cifar100_norgaprompt':
+    if config == 'cifar100_ebag':
         from configs.cifar100 import get_args_parser
-        parser = subparser.add_parser('cifar100_norgaprompt', help='Split-CIFAR100 EBAG configs')
-    elif config == "cub_norgaprompt":
+        parser = subparser.add_parser('cifar100_ebag', help='Split-CIFAR100 EBAG configs')
+    elif config == "cub_ebag":
         from configs.cub import get_args_parser
-        parser = subparser.add_parser('cub_norgaprompt', help='Split-CUB EBAG configs')
-    elif config == 'imr_norgaprompt':
+        parser = subparser.add_parser('cub_ebag', help='Split-CUB EBAG configs')
+    elif config == 'imr_ebag':
         from configs.imr import get_args_parser
-        parser = subparser.add_parser('imr_norgaprompt', help='Split-IMR EBAG configs')
+        parser = subparser.add_parser('imr_ebag', help='Split-IMR EBAG configs')
     get_args_parser(parser)
     args = parser.parse_args()
     args.config = config
@@ -34,15 +34,15 @@ def get_args():
     config = parser.parse_known_args()[-1][0]
     subparser = parser.add_subparsers(dest='subparser_name')
 
-    if config == 'cifar100_norgaprompt':
+    if config == 'cifar100_ebag':
         from configs.cifar100 import get_args_parser
-        config_parser = subparser.add_parser('cifar100_norgaprompt', help='Split-CIFAR100 EBAG configs')
-    elif config == 'imr_norgaprompt':
+        config_parser = subparser.add_parser('cifar100_ebag', help='Split-CIFAR100 EBAG configs')
+    elif config == 'imr_ebag':
         from configs.imr import get_args_parser
-        config_parser = subparser.add_parser('imr_norgaprompt', help='Split-ImageNet-R EBAG configs')
-    elif config == "cub_norgaprompt":
+        config_parser = subparser.add_parser('imr_ebag', help='Split-ImageNet-R EBAG configs')
+    elif config == "cub_ebag":
         from configs.cub import get_args_parser
-        config_parser = subparser.add_parser('cub_norgaprompt', help='Split-CUB EBAG configs')
+        config_parser = subparser.add_parser('cub_ebag', help='Split-CUB EBAG configs')
     else:
         raise NotImplementedError
 
